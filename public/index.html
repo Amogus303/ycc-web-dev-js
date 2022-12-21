@@ -11,13 +11,32 @@
   <div class="container">
     <h2 class="todo__caption">Список задач</h2>
     <div>
-      <input class="form-control" type="text" placeholder="Новая задача">
+      <input id="do-it" class="form-control" type="text" placeholder="Новая задача">
+      <button id="add-btn" type="button">Добавить</button>
       <div class="todo-body">
-        <ul class="list">
+        <ul id="todo-list" class="list">
         </ul>
       </div>
     </div>
   </div>
 </body>
+<script>
+
+  let myBtn = document.getElementById('add-btn')
+  myBtn.addEventListener('click', addItem)
+
+  function addItem(data) {
+    let myInput = document.getElementById('do-it')
+    let myList = document.getElementById('todo-list')
+
+    if (myInput.value !== '') {
+      let newItem = document.createElement('li')
+      newItem.innerText = myInput.value
+      myList.appendChild(newItem)
+      myInput.value = '';
+    }
+  }
+
+</script>
 
 </html>
