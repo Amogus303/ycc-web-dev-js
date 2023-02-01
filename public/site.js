@@ -13,15 +13,25 @@ function addItem(data) {
     let newBlock = 
     `<input onclick="finishTask(${countTask})" class="form-check-input me-1"  type="checkbox" value="" id="ch-${countTask}">
     <label id="${countTask}" class="form-check-label stretched-link" for="ch-${countTask}">${myInput.value}</label>
-    <div class="btn-group" role="group" aria-label="Basic outlined example">
-  <button type="button" class="btn btn-outline-primary btn-sm">Удалить</button>
-  <button type="button" class="btn btn-outline-primary btn-sm">Изменить</button>
+
+    <div style="z-index:1000" class="btn-group" role="group" aria-label="Basic outlined example">
+  <button type="button" class="btn btn-outline-primary btn-sm delete">Удалить</button>
+  <button type="button" class="btn btn-outline-primary btn-sm delete">Изменить</button>
 </div>`
     newItem.innerHTML = newBlock
     newItem.classList.add('list-group-item')
     myList.appendChild(newItem)
     myInput.value = '';
   }
+}
+
+document.querySelector('ul').onclick = function(e) {
+  const btn = e.target.closest('.delete');
+  if (!btn) {
+    return;
+  }
+
+  btn.parentElement.remove();
 }
 
 function finishTask(lableId) {
