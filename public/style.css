@@ -22,4 +22,5 @@ body {
 
 .item-completed {
   text-decoration: line-through;
+  color: gray;
 }
